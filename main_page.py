@@ -21,43 +21,44 @@ session = DBSession()
 #restaurant=session.query(Restaurant).all()
 #menu_item=session.query(MenuItem).filter_by(restaurant_id=restaurant.id).all()
 app=Flask(__name__)
-@app.route('/')
+
+@app.route('/restaurants')
 def showRestaurantNames():
 	return "This will Show all Restaurants name"
 
-@app.route('/create/')
+@app.route('/restaurants/create/')
 def editRestaurantName():
 	return "This will Create Restaurant Name"
 
 
-@app.route('/edit/<int:restaurant_id>')
+@app.route('/restaurants/edit/<int:restaurant_id>')
 def editRestaurantName(restaurant_id):
 	return "This will Edit Restaurant Name"
 
 
-@app.route('/delete/<int:restaurant_id>')
+@app.route('/restaurants/delete/<int:restaurant_id>')
 def deleteRestaurantName(restaurant_id):
 	return "This will delete Restaurant Name"	
 
 
-@app.route('/menu-items/<int:restaurant_id>/')
+@app.route('/restaurants/menu-items/<int:restaurant_id>/')
 def showMenuItem(restaurant_id):
 	return "Show Menu of a restaurant"
 
 
 
-@app.route('/<int:restaurant_id>/create-menu-item/<int:menu_id>/')
+@app.route('/restaurants/<int:restaurant_id>/create-menu-item/<int:menu_id>/')
 def createMenuItem(restaurant_id,menu_id):
 	return "Create  Menu Item here"
 
 
 
-@app.route('/<int:restaurant_id>/delete-menu-item/<int:menu_id>/')
+@app.route('/restaurants/<int:restaurant_id>/delete-menu-item/<int:menu_id>/')
 def deleteMenuItem(restaurant_id,menu_id):
 	return "Delete Menu Item here"
 
 
-@app.route('/<int:restaurant_id>/edit-menu-item/<int:menu_id>/')
+@app.route('/restaurants/<int:restaurant_id>/edit-menu-item/<int:menu_id>/')
 def editMenuItem(restaurant_id,menu_id):
 	return "edit Menu Item here"
 				
