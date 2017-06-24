@@ -25,7 +25,9 @@ app=Flask(__name__)
 def showRestaurantNames():
 	return "This will Show all Restaurants name"
 
-
+@app.route('/create/')
+def editRestaurantName():
+	return "This will Create Restaurant Name"
 
 
 @app.route('/edit/<int:restaurant_id>')
