@@ -41,24 +41,24 @@ def deleteRestaurantName(restaurant_id):
 	return "This will delete Restaurant Name"	
 
 
-@app.route('/restaurants/menu-items/<int:restaurant_id>/')
+@app.route('/restaurants/<int:restaurant_id>/menu/')
 def showMenuItem(restaurant_id):
 	return "Show Menu of a restaurant"
 
 
 
-@app.route('/restaurants/<int:restaurant_id>/create-menu-item/<int:menu_id>/')
+@app.route('/restaurants/<int:restaurant_id>/menu/create/<int:menu_id>/')
 def createMenuItem(restaurant_id,menu_id):
 	return "Create  Menu Item here"
 
 
 
-@app.route('/restaurants/<int:restaurant_id>/delete-menu-item/<int:menu_id>/')
+@app.route('/restaurants/<int:restaurant_id>/menu/delete/<int:menu_id>/')
 def deleteMenuItem(restaurant_id,menu_id):
 	return "Delete Menu Item here"
 
 
-@app.route('/restaurants/<int:restaurant_id>/edit-menu-item/<int:menu_id>/')
+@app.route('/restaurants/<int:restaurant_id>/menu/edit/<int:menu_id>/')
 def editMenuItem(restaurant_id,menu_id):
 	return "edit Menu Item here"
 				
