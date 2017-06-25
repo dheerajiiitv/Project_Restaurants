@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -24,43 +24,47 @@ app=Flask(__name__)
 
 @app.route('/restaurants')
 def showRestaurantNames():
-	return "This will Show all Restaurants name"
+	restaurants=session.query(Restaurant).all()
+	return render_template("restaurants.html",restaurants=restaurants)
 
 @app.route('/restaurants/create/')
-def editRestaurantName():
-	return "This will Create Restaurant Name"
+def createRestaurantName():
+	return render_template("newrestaurants.html")
 
 
 @app.route('/restaurants/edit/<int:restaurant_id>')
 def editRestaurantName(restaurant_id):
-	return "This will Edit Restaurant Name"
+	restaurants=session.query(Restaurant).filter_by(id=restaurant_id).one()
+	return render_template("editrestaurant.html",restaurants=restaurants)
 
 
 @app.route('/restaurants/delete/<int:restaurant_id>')
 def deleteRestaurantName(restaurant_id):
-	return "This will delete Restaurant Name"	
+	return render_template("deleterestaurant.html")
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/')
 def showMenuItem(restaurant_id):
-	return "Show Menu of a restaurant"
+	restaurants=session.query(Restaurant).filter_by(id=restaurant_id).one()
+	items=session.query(MenuItem).filter_by(restaurant_id=restaurants.id)
+	return render_template("menu.html",restaurants=restaurants,items=items)
 
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/create/<int:menu_id>/')
 def createMenuItem(restaurant_id,menu_id):
-	return "Create  Menu Item here"
+	return render_template("newmenuitem.html")
 
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/delete/<int:menu_id>/')
 def deleteMenuItem(restaurant_id,menu_id):
-	return "Delete Menu Item here"
+	return render_template("editmenuitem.html")
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/edit/<int:menu_id>/')
 def editMenuItem(restaurant_id,menu_id):
-	return "edit Menu Item here"
+	return render_template("deletemenuitem.html")
 				
 
 
