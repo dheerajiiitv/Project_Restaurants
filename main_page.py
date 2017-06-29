@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for,request,redirect
+from flask import Flask,render_template,url_for,request,redirect,jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -122,10 +122,16 @@ def deleteMenuItem(restaurant_id,menu_id):
 	else:    
 		return render_template("deletemenuitem.html",restaurant_id=restaurant_id,menu_id=menu_id)
 
-
-				
-
-
+@app.route('/restaurants/<int:restaurant_id>/menu/JSON/')
+def restaurantMenuJSON(restaurant_id):
+	
+	Menu=session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
+	try:
+		for i in Menu:
+			for r in Menu:
+					return jsonify(MenuItems=[i.serialize for i in Menu])
+	except:
+		return "No Menu item"	    		
 if __name__ == '__main__':
 	app.debug = True
 	app.run(host='0.0.0.0',port=8000)

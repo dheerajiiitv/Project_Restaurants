@@ -10,6 +10,7 @@
 {%for rest in restaurants%}
 <p>{{rest.name}}</p>
 <p><a href={{url_for('showMenuItem',restaurant_id=rest.id)}}>Show Menu Items</a></p>
+<p><a href={{url_for('restaurantMenuJSON',restaurant_id=rest.id)}}>Show Menu Items in Json format</a></p>
 <p><a href={{url_for('editRestaurantName',restaurant_id=rest.id)}}>Edit</a></p>
 <p><a href={{url_for('deleteRestaurantName',restaurant_id=rest.id)}}>Delete</a></p>
 <br>
