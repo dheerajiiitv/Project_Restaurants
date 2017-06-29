@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Menu Item</title>
+</head>
+<body>
+<h1> Enter new Item here for {{restaurant.name}}</h1>
+<form method='POST' action={{url_for('createMenuItem',restaurant_id=restaurant.id)}}>
+	Name:<input type="text" name="name" >
+	Price:<input type="text" name="price" >
+	Description:<input type="text" name="description" >
+	Course:<input type="text" name="course">
+
+	<input type="Submit" value="Submit ">
+</form>
+<a href={{url_for('showMenuItem',restaurant_id=restaurant.id)}}>Cancel</a></p>
+
+</body>
+</html>

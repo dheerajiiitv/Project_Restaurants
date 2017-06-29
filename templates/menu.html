@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Menu Item</title>
+	<title>Menu Items</title>
 </head>
 <body>
 <h1>Menu item for {{restaurants.name}}</h1>
+<a href={{url_for('createMenuItem',restaurant_id=restaurants.id)}}>Make a new menu item </a>
 {%for i in items%}
 <p>{{i.name}}</p><br>
 <p>{{i.price}}</p><br>
 <p>{{i.course}}</p><br>
 <p>{{i.description}}</p><br>
+<p><a href={{url_for('editMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}}>Edit</a></p>
+<p><a href={{url_for('deleteMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}}>Delete</a></p>
 <br>
 <hr>
 {%endfor%}
+
+<p><a href={{url_for('showRestaurantNames')}}>Go back to restaurant page</a></p>
+
 </body>
 </html>
