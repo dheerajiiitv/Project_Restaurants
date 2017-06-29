@@ -2,22 +2,59 @@
 <html>
 <head>
 	<title>Menu Items</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
 </head>
 <body>
-<h1>Menu item for {{restaurants.name}}</h1>
-<a href={{url_for('createMenuItem',restaurant_id=restaurants.id)}}>Make a new menu item </a>
-{%for i in items%}
-<p>{{i.name}}</p>
-<p>{{i.price}}</p>
-<p>{{i.course}}</p>
-<p>{{i.description}}</p>
-<p><a href={{url_for('editMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}}>Edit</a></p>
-<p><a href={{url_for('deleteMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}}>Delete</a></p>
-<br>
-<hr>
-{%endfor%}
-
-<p><a href={{url_for('showRestaurantNames')}}>Go back to restaurant page</a></p>
-
+<div class="container">
+<div class ="row">
+		<div class="col-md-12 head">
+	<a href={{url_for('createMenuItem',restaurant_id=restaurants.id)}}>Add a new menu item </a>
+		</div>
+	</div>
+	<div class ="row">
+		<div class="col-md-12 text-center">
+			<h1>{{restaurants.name}}</h1>
+		</div>
+	</div>
+	
+	{%for i in items%}
+	<div class ="row">
+		<div class="col-md-3 item">
+	<p >{{i.name}}</p>
+		</div>
+		<div class="col-md-3 item">
+	<p>{{i.price}}</p>
+	</div>
+		<div class="col-md-3 item">
+	<p>{{i.course}}</p>
+	</div>
+		<div class="col-md-3 item">
+	<p>{{i.description}}</p>
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+	<a href={{url_for('editMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}} class="btn btn-warning">Edit</a>
+	</div>
+		<div class="col-md-1">
+	<a href={{url_for('deleteMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}} class="btn btn-danger">Delete</a>
+	</div>
+		
+	
+	</div>
+	<hr>
+	{%endfor%}
+	
+	<div class="row">
+		<div class="col-md-12 head">
+	<p><a href={{url_for('showRestaurantNames')}}>Go back to restaurant page</a></p>
+	</div>
+	</div>
+</div>
 </body>
 </html>

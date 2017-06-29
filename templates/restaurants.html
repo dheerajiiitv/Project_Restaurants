@@ -2,20 +2,53 @@
 <html>
 <head>
 	<title>Restaurants</title>
-	<head></head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">	
 </head>
 <body>
-<h1>Restaurants</h1>
-<a href={{url_for('createRestaurantName')}}>Make a new restuarant </a>
-{%for rest in restaurants%}
-<p>{{rest.name}}</p>
-<p><a href={{url_for('showMenuItem',restaurant_id=rest.id)}}>Show Menu Items</a></p>
-<p><a href={{url_for('restaurantMenuJSON',restaurant_id=rest.id)}}>Show Menu Items in Json format</a></p>
-<p><a href={{url_for('editRestaurantName',restaurant_id=rest.id)}}>Edit</a></p>
-<p><a href={{url_for('deleteRestaurantName',restaurant_id=rest.id)}}>Delete</a></p>
-<br>
-<br>
-{%endfor%}
+<div class="container">
+	<div class="row ">
+		<div class="col-md-6 text-left head ">
+			<a href={{url_for('createRestaurantName')}}>Add a new restuarant </a>
+		</div>
+		<div class="col-md-6 text-right head">
+			<a href="#">Login</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center headi">
+			<h1>Restaurants</h1>
+		</div>
+	</div>
 
+
+	{%for rest in restaurants%}
+	<div class="names">
+	<div class="row">
+		<div class="col-md-12 rest_name">
+			<h3>{{rest.name}}</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+			<a href={{url_for('showMenuItem',restaurant_id=rest.id)}} class="btn btn-primary">Menu</a>
+		</div>
+		<div class="col-md-1">
+			<a href={{url_for('editRestaurantName',restaurant_id=rest.id)}} class="btn btn-warning">Edit</a>
+		</div>
+		<div class="col-md-1">
+			<a href={{url_for('deleteRestaurantName',restaurant_id=rest.id)}} class="btn btn-danger">Delete</a>
+		</div>
+	</div>
+	<br>
+	<br>
+	{%endfor%}
+	</div>
+</div>
 </body>
 </html>

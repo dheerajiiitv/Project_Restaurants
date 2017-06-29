@@ -1,0 +1,19 @@
+body{
+	font-family: 'Bellefair', serif;
+}
+.rest_name h3 {
+font-family: 'Dancing Script', cursive;
+color: #82ea82;
+font-size: 50px;
+}
+.item p{
+	font-family: 'Dancing Script', cursive;
+	font-size: 25px;
+}
+.headi h1{
+	font-size: 80px;
+	
+}	
+.head a{
+	font-size: 25px;
+}
